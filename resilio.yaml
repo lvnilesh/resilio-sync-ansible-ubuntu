@@ -66,6 +66,14 @@
         group: root
         mode: '0644'
 
+    - name: Create /home/{{ USERNAME }}/.config/resilio-sync if it does not exist
+      ansible.builtin.file:
+        path: /home/{{ USERNAME }}/.config/resilio-sync
+        state: directory
+        owner: "{{ USERNAME }}"
+        group: "{{ USERNAME }}"
+        mode: 0755
+        
     - name: Copy user config
       template:
         src: config.json.j2
