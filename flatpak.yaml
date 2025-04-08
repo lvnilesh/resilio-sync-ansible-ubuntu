@@ -1,0 +1,25 @@
+---
+- name: Install and configure flatpak on Ubuntu
+  hosts: all
+  become: yes
+
+  vars:
+    USERNAME: cloudgenius
+
+  tasks:
+
+    - name: install git and vim packages
+      apt: name={{ item }} update_cache=yes state=latest
+      with_items:
+        - flatpak
+        - gnome-software-plugin-flatpak        
+
+      # flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+    - name: Add the flatpak remote to the system installation
+      community.general.flatpak_remote:
+        name: flatpak
+        state: present
+        flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+
+
