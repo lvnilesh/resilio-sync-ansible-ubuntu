@@ -18,7 +18,7 @@
         mode: a+r
 
 
-    - name: Add Docker Repository
+    - name: Add Nvidia container repository
       apt_repository:
         repo: deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] deb https://nvidia.github.io/libnvidia-container/stable/deb/$(ARCH)
         state: present
