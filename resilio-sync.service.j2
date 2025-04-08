@@ -1,0 +1,8 @@
+$ sudo systemctl edit resilio-sync.service
+[Service]
+User={{ USERNAME }}
+Group={{ USERNAME }}
+PIDFile=/home/{{ USERNAME }}/.config/resilio-sync/sync.pid
+ExecStartPre=
+ExecStart=
+ExecStart=/usr/bin/rslsync --config /home/{{ USERNAME }}/.config/resilio-sync/config.json
