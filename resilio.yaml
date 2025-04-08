@@ -58,18 +58,18 @@
         group: root
         mode: 0755
         
-    - name: Copy Resilio Sync license file
-      ansible.builtin.get_url:
-        url: https://download.i.cloudgenius.app/Resilio/Sync_Home_23515.btskey # ./Sync_Home_23515.btskey  # Adjust this path to your license file location
-        dest: /var/lib/resilio-sync/.sync_license
-        owner: root
-        group: root
-        mode: '0644'
-
     - name: Create storage path if it does not exist
       ansible.builtin.file:
         path: /home/{{ USERNAME }}/btsync
         state: directory
+        owner: "{{ USERNAME }}"
+        group: "{{ USERNAME }}"
+        mode: 0755
+
+    - name: Copy Resilio Sync license file
+      ansible.builtin.get_url:
+        url: https://download.i.cloudgenius.app/Resilio/Sync_Home_23515.btskey # ./Sync_Home_23515.btskey  # Adjust this path to your license file location
+        dest: /home/{{ USERNAME }}/btsync/Sync_Home_23515.btskey
         owner: "{{ USERNAME }}"
         group: "{{ USERNAME }}"
         mode: 0755
