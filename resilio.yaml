@@ -15,7 +15,7 @@
       ansible.builtin.apt_key:
         url: https://linux-packages.resilio.com/resilio-sync/key.asc
         state: present
-        keyring: /etc/apt/keyrings/resilio-sync.asc
+        keyring: /etc/apt/trusted.gpg.d/resilio-sync.asc
 
     - name: Add Resilio Sync repository
       apt_repository:
