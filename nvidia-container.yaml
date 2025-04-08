@@ -17,12 +17,10 @@
         group: root
         mode: a+r
 
-
     - name: Add Nvidia container repository
       apt_repository:
-        repo: deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] deb https://nvidia.github.io/libnvidia-container/stable/deb/$(ARCH)
+        repo: deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] deb https://nvidia.github.io/libnvidia-container/stable/deb/amd64/
         state: present
-
 
     # - name: Add Nvidia container repository
     #   shell: |
