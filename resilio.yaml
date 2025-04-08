@@ -66,6 +66,14 @@
         group: root
         mode: '0644'
 
+    - name: Create storage path if it does not exist
+      ansible.builtin.file:
+        path: /home/{{ USERNAME }}/btsync
+        state: directory
+        owner: "{{ USERNAME }}"
+        group: "{{ USERNAME }}"
+        mode: 0755
+
     - name: Create /home/{{ USERNAME }}/.config/resilio-sync if it does not exist
       ansible.builtin.file:
         path: /home/{{ USERNAME }}/.config/resilio-sync
