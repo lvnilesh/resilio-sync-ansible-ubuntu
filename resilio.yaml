@@ -33,8 +33,7 @@
         - vim
         - git
 
-    # file module will create a directory if missing
-    - name: Create resilio-sync.service.d directory
+    - name: Create resilio-sync.service.d directory if does not exist
       file:
         path: /etc/systemd/system/resilio-sync.service.d/
         state: directory
@@ -42,8 +41,6 @@
         group: root
         mode: 0755
 
-
-    # template module will create a file
     - name: Copy resilio-sync.service drop-in
       template:
         src: resilio-sync.service.j2
@@ -68,6 +65,14 @@
         owner: root
         group: root
         mode: '0644'
+
+    - name: Copy user config
+      template:
+        src: config.json.j2
+        dest: /home/{{ USERNAME }}/.config/resilio-sync/config.json
+        owner: {{ USERNAME }}
+        group: {{ USERNAME }}
+        mode: 0644
 
     - name: Ensure Resilio Sync is restarted and enabled
       systemd:
