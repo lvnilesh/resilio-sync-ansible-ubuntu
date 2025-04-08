@@ -8,18 +8,18 @@
 
   tasks:
 
-    - name: Add Resilio Sync repository
-      apt_repository:
-        repo: "deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free"
-        state: present
-        filename: "resilio-sync"
-
       # wget -qO- https://linux-packages.resilio.com/resilio-sync/key.asc | sudo tee /etc/apt/trusted.gpg.d/resilio-sync.asc > /dev/null 2>&1
 
     - name: Add an Apt signing key, uses whichever key is at the URL
       ansible.builtin.apt_key:
         url: https://linux-packages.resilio.com/resilio-sync/key.asc
         state: present
+
+    - name: Add Resilio Sync repository
+      apt_repository:
+        repo: "deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free"
+        state: present
+        filename: "resilio-sync"
 
     - name: Install Resilio Sync package
       apt:
