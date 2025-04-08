@@ -1,11 +1,20 @@
 {
+    "device_name": "nuc",
     "storage_path" : "/home/{{ USERNAME }}/.config/resilio-sync/storage",
     "pid_file" : "/home/{{ USERNAME }}/.config/resilio-sync/sync.pid",
     "display_new_version": false,
+    "use_upnp" : true,
+    "download_limit" : 0,
+    "upload_limit" : 0,
+
+    /* directory_root path defines where the WebUI Folder browser starts (linux only). Default value is / */
+    "directory_root" : "/home/{{ USERNAME }}/btsync/",
 
     "webui" :
     {
         "listen" : "0.0.0.0:8888",
+        "login" : "{{ USERNAME }}"
+        "password" : "",      
         "allow_empty_password" : true
     }
 }
