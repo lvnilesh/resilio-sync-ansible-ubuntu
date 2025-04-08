@@ -13,3 +13,5 @@
       with_items:
         - nvidia-driver-570-server
         - nvidia-cuda-toolkit
+        - cmake
+        - build-essential
