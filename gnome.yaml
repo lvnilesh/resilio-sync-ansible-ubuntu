@@ -1,0 +1,20 @@
+---
+- name: Install and configure flatpak on Ubuntu
+  hosts: all
+  become: yes
+
+  vars:
+    USERNAME: cloudgenius
+
+  tasks:
+
+    - name: install gnome
+      apt: name={{ item }} update_cache=yes state=latest
+      with_items:
+        - gnome-desktop-minimal
+
+    - name: Ensure gdm is started and enabled
+      systemd:
+        name: gdm
+        enabled: yes
+        state: started

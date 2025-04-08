@@ -8,7 +8,7 @@
 
   tasks:
 
-    - name: install git and vim packages
+    - name: install flatpak packages
       apt: name={{ item }} update_cache=yes state=latest
       with_items:
         - flatpak
