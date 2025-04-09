@@ -38,3 +38,11 @@
         name: nvidia-container-toolkit
         state: present
         update_cache: yes
+
+    - name: Install nvidia-docker2
+      apt:
+        name: nvidia-docker2
+        state: present
+        update_cache: yes
+
+
