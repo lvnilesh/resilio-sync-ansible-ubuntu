@@ -1,3 +1,4 @@
+# https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
 ---
 - name: Install Nvidia Container Toolkit
   hosts: all
@@ -45,4 +46,14 @@
         state: present
         update_cache: yes
 
+    - name: configure nvidia-ctk runtime
+      command: sudo nvidia-ctk runtime configure --runtime=docker
 
+    - name: Ensure docker is restarted and enabled
+      systemd:
+        name: docker
+        enabled: yes
+        state: restarted
+
+# docker run --rm --gpus all nvidia/cuda:12.6.3-cudnn-runtime-ubuntu24.04 nvidia-smi
+# https://github.com/iot-salzburg/gpu-jupyter
