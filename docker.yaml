@@ -21,6 +21,7 @@
           "python3-pip",
           "virtualenv",
           "python3-setuptools",
+          "bash-completion",
         ]
 
 # sudo install -m 0755 -d /etc/apt/keyrings
